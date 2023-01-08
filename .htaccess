@@ -10,12 +10,12 @@ DirectoryIndex index.php index.html index.htm
 
 RewriteEngine on
 #WWW REWRITE
-RewriteCond %{HTTP_HOST} ^istadoc\.ga$ [NC]
-RewriteRule ^(.*)$ http://www.istadoc.ga/$1 [L,R=301]
+#RewriteCond %{HTTP_HOST} ^istadoc\.ga$ [NC]
+#RewriteRule ^(.*)$ http://www.istadoc.ga/$1 [L,R=301]
 
 #REDIRECT OLD PAGE
-RewriteCond %{HTTP_HOST} ^www.istadoc.ga$
-RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
+#RewriteCond %{HTTP_HOST} ^www.istadoc.ga$
+#RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
 #redirect http non-www to https://www
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^(www\.)?istadoc\.ga$
