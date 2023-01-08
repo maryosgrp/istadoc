@@ -20,3 +20,5 @@ RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
 
 #ERROR 404 PAGE
 ErrorDocument 404 /404.html
+RewriteCond %{HTTP_HOST} ^http://istadoc.ga$
+RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
