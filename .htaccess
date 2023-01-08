@@ -17,8 +17,9 @@ RewriteRule ^(.*)$ http://www.istadoc.ga/$1 [L,R=301]
 #REDIRECT OLD PAGE
 RewriteCond %{HTTP_HOST} ^www.istadoc.ga$
 RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
-
-#ERROR 404 PAGE
-ErrorDocument 404 /404.html
+#REDIRECT OLD PAGE
 RewriteCond %{HTTP_HOST} ^http://istadoc.ga$
 RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
+#ERROR 404 PAGE
+ErrorDocument 404 /404.html
+
