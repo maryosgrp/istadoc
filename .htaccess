@@ -9,15 +9,6 @@ Options +FollowSymLinks
 DirectoryIndex index.php index.html index.htm
 
 RewriteEngine on
-# Canonical https/www (when using proxy)
-<IfModule mod_rewrite.c>
-	RewriteCond %{HTTP:X-Forwarded-Proto} !https
-	RewriteCond %{HTTPS} off
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-	
-	RewriteCond %{HTTP_HOST} !^www\. [NC]
-	RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
 #WWW REWRITE
 RewriteCond %{HTTP_HOST} ^istadoc\.ga$ [NC]
 RewriteRule ^(.*)$ http://www.istadoc.ga/$1 [L,R=301]
@@ -25,7 +16,14 @@ RewriteRule ^(.*)$ http://www.istadoc.ga/$1 [L,R=301]
 #REDIRECT OLD PAGE
 RewriteCond %{HTTP_HOST} ^www.istadoc.ga$
 RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
-
+#redirect http non-www to https://www
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^(www\.)?istadoc\.ga$
+RewriteRule (.*) https://www.istadoc.ga/$1 [R=301,L]
+#redirect https non-www to www
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^istadoc\.ga$
+RewriteRule (.*) https://www.istadoc.ga/$1 [R=301,L]
 #ERROR 404 PAGE
 ErrorDocument 404 /404.html
 
