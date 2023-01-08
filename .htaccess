@@ -17,7 +17,7 @@ RewriteEngine on
 #RewriteCond %{HTTP_HOST} ^www.istadoc.ga$
 #RewriteRule ^old-page.html$ http://www.istadoc.ga/new-page [R=301,L]
 #redirect http non-www to https://www
-RewriteCond %{HTTPS} off
+RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP_HOST} ^(www\.)?istadoc\.ga$
 RewriteRule (.*) https://www.istadoc.ga/$1 [R=301,L]
 #redirect https non-www to www
