@@ -9,8 +9,9 @@ Options +FollowSymLinks
 DirectoryIndex index.php index.html index.htm
 
 RewriteEngine on
-# Canonical https/www
+# Canonical https/www (when using proxy)
 <IfModule mod_rewrite.c>
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https
 	RewriteCond %{HTTPS} off
 	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
